@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pink">#f2dae7</color>
     <color name="pink_light">#F6EBF1</color>
+    <color name="pink_strong">#FF22AE</color>
+    <color name="red">#FF0000</color>
         <color name="colorPrimary">#008577</color>
         <color name="colorPrimaryDark">#00574B</color>
         <color name="colorAccent">#D81B60</color>

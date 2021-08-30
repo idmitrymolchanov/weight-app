@@ -2,6 +2,7 @@ package com.example.weight.screens.details;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,12 +10,17 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.weight.App;
 import com.example.weight.R;
 import com.example.weight.model.Entity;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class NoteDetailsActivity extends AppCompatActivity {
 
@@ -23,6 +29,8 @@ public class NoteDetailsActivity extends AppCompatActivity {
     private Entity note;
 
     private EditText editText;
+
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
 
     public static void start(Activity caller, Entity note) {
         Intent intent = new Intent(caller, NoteDetailsActivity.class);
@@ -70,7 +78,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
             case R.id.action_save:
                 if (editText.getText().length() > 0) {
                     note.current_weight = Double.parseDouble(editText.getText().toString());
-                    note.current_date = "111";
+                    note.current_date = getData();
                     if (getIntent().hasExtra(EXTRA_NOTE)) {
                         App.getInstance().getNoteDao().update(note);
                     } else {
@@ -81,5 +89,10 @@ public class NoteDetailsActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private static String getData() {
+
+        return dateFormat.format(new Date());
     }
 }

@@ -1,8 +1,8 @@
 package com.example.weight.screens.details;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,7 +10,6 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -19,8 +18,8 @@ import com.example.weight.R;
 import com.example.weight.model.Entity;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
+import java.util.Objects;
 
 public class NoteDetailsActivity extends AppCompatActivity {
 
@@ -30,7 +29,8 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
     private EditText editText;
 
-    private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
+    @SuppressLint("SimpleDateFormat")
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
     public static void start(Activity caller, Entity note) {
         Intent intent = new Intent(caller, NoteDetailsActivity.class);
@@ -48,7 +48,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
         setTitle("");
@@ -69,6 +69,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

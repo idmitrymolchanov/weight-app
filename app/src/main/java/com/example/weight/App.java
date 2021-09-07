@@ -44,7 +44,7 @@ public class App extends Application {
         return firstDao;
     }
 
-    public void setNoteDao(FirstDao noteDao) {
+    public void setNoteDao(FirstDao firstDao) {
         this.firstDao = firstDao;
     }
 }

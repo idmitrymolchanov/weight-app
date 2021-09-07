@@ -21,7 +21,7 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.NoteViewHolder> {
 
-    private SortedList<Entity> sortedList;
+    private final SortedList<Entity> sortedList;
 
     public Adapter() {
 
